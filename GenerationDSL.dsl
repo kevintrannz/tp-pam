@@ -1,0 +1,9 @@
+[condition][]Open Bracket =(
+[condition][]Close Bracket =)
+[condition][]AND =and
+[condition][]OR =or
+[condition][]NOT =not
+[condition][]Generation_Totals {$Gentotal}: {MW_Source} > {num}={$Gentotal} : Generation_Totals( NIMWC > {num} )
+[consequence][]Log name of this rule=System.out.println("Executed Rule: " + drools.getRule().getName() );
+[consequence][]Raise alert {description}=insert( new Alert(true, "{description}" ));
+[consequence][]Send alert {description}= AlertSender.Send(payload);

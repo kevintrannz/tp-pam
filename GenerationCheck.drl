@@ -1,0 +1,48 @@
+package com.myspace.testsi;
+import com.myspace.testsi.AlertSender;
+import com.myspace.testsi.Alert;
+import com.myspace.testsi.Generation_Totals;
+
+rule "create generation object"
+    dialect "mvel"
+    when
+        g : Generation_Totals()
+    then
+        System.out.println("Object Created");
+end
+
+rule "North Island Total Current"
+    dialect "mvel"
+    when
+        g : Generation_Totals( NIMWC > 2000)
+    then
+        System.out.println("Executed Rule: " + drools.getRule().getName());
+        System.out.println("Object: " + g.NIMWC);
+end
+
+rule "North Island Total Dispatch"
+    dialect "mvel"
+    when
+        g : Generation_Totals( NIMWD > 2000)
+    then
+        System.out.println("Executed Rule: " + drools.getRule().getName());
+        System.out.println("Object: " + g.NIMWC);
+end
+
+rule "South Island Total Current"
+    dialect "mvel"
+    when
+        g : Generation_Totals( SIMWC > 2000)
+    then
+        System.out.println("Executed Rule: " + drools.getRule().getName());
+        System.out.println("Object: " + g.NIMWC);
+end
+
+rule "South Island Total Dispatch"
+    dialect "mvel"
+    when
+        g : Generation_Totals( SIMWD > 2000)
+    then
+        System.out.println("Executed Rule: " + drools.getRule().getName());
+        System.out.println("Object: " + g.NIMWC);
+end

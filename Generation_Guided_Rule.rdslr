@@ -1,0 +1,13 @@
+package com.myspace.testsi;
+
+import java.lang.Number;
+import java.lang.String;
+
+rule "Generation_Guided_Rule"
+	dialect "mvel"
+	when
+		$Gentotal : Generation_Totals( NIMWC > 2000 )
+	then
+		System.out.println("Executed Rule: " + drools.getRule().getName() );
+		insert( new Alert(true, "SIMWD over 2000" ));
+end

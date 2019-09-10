@@ -1,0 +1,14 @@
+package com.myspace.testsi;
+import com.myspace.testsi.AlertSender;
+import com.myspace.testsi.Alert;
+import com.myspace.testsi.Generation_Totals;
+
+rule "create island total object"
+    dialect "mvel"
+    when
+        g : Generation_Totals()
+    then
+        System.out.println("Calculating Island Totals");
+        //Call a java function that runs an external Python model
+        AlertSender_Totals.Send(g.NIMWC, g.SIMWC);
+end

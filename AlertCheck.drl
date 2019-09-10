@@ -1,0 +1,15 @@
+package com.myspace.testsi;
+import com.myspace.testsi.AlertSender;
+import com.myspace.testsi.AlertSender_Market;
+import com.myspace.testsi.Alert;
+import com.myspace.testsi.Generation_Totals;
+
+rule "create alert object"
+    dialect "mvel"
+    when
+        a : Alert()
+    then
+        System.out.println("Calculating Island Totals");
+        //Send Alert
+        AlertSender_Market.Send(a.description);
+end

@@ -1,0 +1,16 @@
+package com.myspace.testsi;
+import com.myspace.testsi.AlertSender;
+import com.myspace.testsi.Alert;
+import com.myspace.testsi.Generation_Totals;
+import com.myspace.testsi.twoislandtotal;
+
+rule "alert island total rule"
+    dialect "mvel"
+    when
+        $k : twoislandtotal( nztotal > 10000)
+
+    then
+        System.out.println("Calculating Island Totals");
+        //Call a java function that runs an external Python model
+        AlertSender_Market.Send("{\"nztotal is high\":\"" + $k.nztotal + "\"");
+end
